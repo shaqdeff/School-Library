@@ -1,4 +1,4 @@
-# create nameable class 
+# create nameable class
 class Nameable
   def correct_name
     raise NotImplementedError
@@ -13,17 +13,18 @@ class Decorator < Nameable
   def correct_name
     @nameable.correct_name
   end
-end 
+end
 
 class CapitalizeDecorator < Decorator
   def correct_name
-    super.capitalize
+    @nameable.correct_name.capitalize
   end
 end
 
 class TrimmerDecorator < Decorator
   def correct_name
-    return unless super.length > 10
+    return unless @nameable.correct_name.length > 10
+
     super[0...10]
   end
 end
