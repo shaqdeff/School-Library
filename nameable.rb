@@ -1,7 +1,7 @@
 # create nameable class
 class Nameable
   def correct_name
-    raise NotImplementedError
+    raise NotImplementedError, "#{self.class} must implement abstract method '#{__method__}'"
   end
 end
 
