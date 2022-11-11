@@ -1,26 +1,28 @@
-# create person class
 class Person
-  def initialize(name = 'Unknown', age, parent_permission: true)
-    @id = rand(1..1000)
+  def initialize(age, name = 'Unknown', parent_permission: true)
+    @id = Random(1..1000)
     @name = name
     @age = age
+    @parent_permission = parent_permission
   end
-end
 
-# getters for id
-attr_reader :id
+  # Getters for @id
+  attr_reader :id
 
-# setters and getters for name and age.
-attr_accessor :name, :age
+  # Getter and Setter for @name and @age
+  attr_accessor :name, :age
 
-# private method for is_of_age 
-private
-def is_of_age?
-  @age >= 18
-end
+  # Private method
+  private
 
-# public method for can_use_services
-public
-def can_use_services?
-  is_of_age? || @parent_permission
+  def of_age?
+    @age >= 18
+  end
+
+  # Public method
+  def can_use_services?
+    return unless of_age? || @parent_permission
+
+    true
+  end
 end
