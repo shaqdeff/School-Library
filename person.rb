@@ -1,4 +1,6 @@
-class Person
+require './nameable'
+
+class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random(1..1000)
     @name = name
@@ -24,5 +26,9 @@ class Person
     return unless of_age? || @parent_permission
 
     true
+  end
+
+  def correct_name
+    @name
   end
 end
