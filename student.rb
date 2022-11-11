@@ -1,4 +1,5 @@
 require './person'
+require './classroom'
 
 # extends person class
 class Student < Person
