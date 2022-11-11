@@ -1,8 +1,12 @@
 require './nameable'
+require './rental'
 
 class Person < Nameable
+    attr_reader :id, :rentals
+    attr_accessor :age, :name, :parent_permission
+
   def initialize(age, name = 'Unknown', parent_permission: true)
-    super
+    super()
     @id = Random(1..1000)
     @name = name
     @age = age
@@ -32,4 +36,9 @@ class Person < Nameable
   def correct_name
     @name
   end
+  
+  def add_rental(date, person)
+      Rental.new(date, person, self)
+    end
 end
+
