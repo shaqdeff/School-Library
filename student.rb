@@ -1,24 +1,20 @@
-require './person'
-require './classroom'
+require_relative 'person'
+require_relative 'classroom'
 
-# extends person class
 class Student < Person
-  attr_accessor :classroom, :type
+  attr_accessor :classroom
 
-  # extends parent's constructor by adding @classroom and a parameter for it
-  def initialize(classroom, age, name = 'Unknown', parent_permission: true)
-    super(age, name, parent_permission)
+  def initialize(age:, classroom:, name:, parent_permission: true)
+    super(age: age, name: name, parent_permission: parent_permission)
     @classroom = classroom
-    @type = 'Student'
   end
 
-  # create playh_hooky method
   def play_hooky
-    '¯(ツ)/¯'
+    '¯\(ツ)/¯'
   end
 
   def add_to_classroom(classroom)
     @classroom = classroom
-    classroom.student << self unless classroom.student.include?(self)
+    classroom.add_student(self)
   end
 end
